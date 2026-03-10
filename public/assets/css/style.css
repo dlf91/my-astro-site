@@ -696,7 +696,7 @@ ul.top-info li p.info-text {
   }
 }
 .header-one .logo-area {
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 .navbar-fixed {
@@ -736,7 +736,7 @@ ul.navbar-nav > li.active > a {
 /*-- Logo --*/
 .logo img {
   width: auto;
-  height: 70px;
+  height: 80px;
 }
 
 .header-two .logo img {
