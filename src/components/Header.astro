@@ -63,8 +63,8 @@ const { current } = Astro.props;
                 
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav mr-auto">
-                      <li class={current === 'Home' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href="/">Home</a></li>
-                      <li class={current === 'About' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href="/about">About Us</a></li>
+                      <li class={current === 'Home' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href="./">Home</a></li>
+                      <li class={current === 'About' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href="./about">About Us</a></li>
                       
                       <!-- <li class="nav-item dropdown active">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Home <i class="fa fa-angle-down"></i></a>
@@ -130,12 +130,12 @@ const { current } = Astro.props;
                         <li class={current === 'Services' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu"> 
-                            <li><a href="/services_mobile">Mobile Vehicle Service & Maintenance</a></li>
-                            <li><a href="/services_auto">Auto Electrician Services</a></li>
-                            <li><a href="/services_air">Automotive Air Conditioning Regas & Maintenance</a></li>
+                            <li><a href="./services_mobile">Mobile Vehicle Service & Maintenance</a></li>
+                            <li><a href="./services_auto">Auto Electrician Services</a></li>
+                            <li><a href="./services_air">Automotive Air Conditioning Regas & Maintenance</a></li>
                           </ul>
                       </li>
-                      <li class={current === 'Contact' ? 'nav-item active' : 'nav-item'}><a class="nav-link" href="/contact">Contact</a></li>
+                      <li class={current === 'Contact' ? 'nav-item active' : 'nav-item'}><a class="nav-link" href="./contact">Contact</a></li>
                     </ul>
                 </div>
               </nav>
