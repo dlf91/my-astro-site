@@ -1,6 +1,7 @@
 ---
 // 1. You MUST extract 'current' from Astro.props here first
 const { current } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <!-- Header start -->
@@ -11,7 +12,7 @@ const { current } = Astro.props;
           <div class="row align-items-center">
             <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
                 <a class="d-block" href="index.html">
-                  <img loading="lazy" src="./assets/images/logo.png" alt="Constra">
+                  <img loading="lazy" src={ baseUrl + "assets/images/logo.png"} alt="Constra">
                 </a>
             </div><!-- logo end -->
   
@@ -63,8 +64,8 @@ const { current } = Astro.props;
                 
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav mr-auto">
-                      <li class={current === 'Home' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href="./">Home</a></li>
-                      <li class={current === 'About' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href="./about">About Us</a></li>
+                      <li class={current === 'Home' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href={ baseUrl } >Home</a></li>
+                      <li class={current === 'About' ? 'nav-item active' : 'nav-item'}> <a class="nav-link" href={ baseUrl + "about" }>About Us</a></li>
                       
                       <!-- <li class="nav-item dropdown active">
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Home <i class="fa fa-angle-down"></i></a>
@@ -130,12 +131,12 @@ const { current } = Astro.props;
                         <li class={current === 'Services' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu"> 
-                            <li><a href="./services_mobile">Mobile Vehicle Service & Maintenance</a></li>
-                            <li><a href="./services_auto">Auto Electrician Services</a></li>
-                            <li><a href="./services_air">Automotive Air Conditioning Regas & Maintenance</a></li>
+                            <li><a href={ baseUrl + "services_mobile" }>Mobile Vehicle Service & Maintenance</a></li>
+                            <li><a href={ baseUrl + "services_auto"}>Auto Electrician Services</a></li>
+                            <li><a href={ baseUrl + "services_air"}>Automotive Air Conditioning Regas & Maintenance</a></li>
                           </ul>
                       </li>
-                      <li class={current === 'Contact' ? 'nav-item active' : 'nav-item'}><a class="nav-link" href="./contact">Contact</a></li>
+                      <li class={current === 'Contact' ? 'nav-item active' : 'nav-item'}><a class="nav-link" href={ baseUrl + "contact"}>Contact</a></li>
                     </ul>
                 </div>
               </nav>

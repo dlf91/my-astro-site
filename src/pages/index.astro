@@ -3,7 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 <MainLayout title="Home">
 <div class="banner-carousel banner-carousel-1 mb-0">
-  <div class="banner-carousel-item" style="background-image:url(./assets/images/slider-main/bg1.jpg)">
+  <div class="banner-carousel-item" style="background-image:url(${baseUrl}assets/images/slider-main/bg1.jpg)">
     <div class="slider-content">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -20,7 +20,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     </div>
   </div>
 
-  <div class="banner-carousel-item" style="background-image:url(./assets/images/slider-main/bg2.jpg)">
+  <div class="banner-carousel-item" style="background-image:url(${baseUrl}assets/images/slider-main/bg2.jpg)">
     <div class="slider-content text-left">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -37,7 +37,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     </div>
   </div>
 
-  <div class="banner-carousel-item" style="background-image:url(./assets/images/slider-main/bg3.jpg)">
+  <div class="banner-carousel-item" style="background-image:url(${baseUrl}assets/images/slider-main/bg3.jpg)">
     <div class="slider-content text-right">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -67,7 +67,7 @@ import MainLayout from '../layouts/MainLayout.astro';
           </div><!-- Col end -->
           <div class="col-md-4 text-center text-md-right mt-3 mt-md-0">
               <div class="call-to-action-btn">
-                <a class="btn btn-primary" href="contact.html">Request Quote</a>
+                <a class="btn btn-primary" href={ baseUrl + "contact"}>Request Quote</a>
               </div>
           </div><!-- col end -->
         </div><!-- row end -->
@@ -142,11 +142,11 @@ import MainLayout from '../layouts/MainLayout.astro';
          <div class="col-lg-4 col-md-6 mb-5">
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="./assets/images/services/service3.jpg" alt="service-image">
+                <img loading="lazy" class="w-100" src={ baseUrl + "assets/images/services/service3.jpg"} alt="service-image">
               </div>
               <div class="d-flex"> 
                 <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="./services_mobile">Mobile Vehicle Service & Maintenance</a></h3>
+                    <h3 class="service-box-title"><a href={ baseUrl + "services_mobile"}>Mobile Vehicle Service & Maintenance</a></h3>
                     <div class="d-flex justify-content-center align-items-center  mb-2">
                     <i class="fa fa-solid fa-map-marker-alt text-danger fa-xs mr-1 "></i>  Mackay Region 
                     </div>
@@ -167,7 +167,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                         <li> <i class="fa fa-solid fa-check fa-xs"></i> Reliable, high-quality workmanship</li>
                     </ul>
                     </p>
-                    <a class="learn-more d-inline-block" href="./services_mobile" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
+                    <a class="learn-more d-inline-block" href={ baseUrl + "services_mobile"} aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
                 </div>
               </div>
           </div><!-- Service3 end -->
@@ -176,11 +176,11 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="col-lg-4 col-md-6 mb-5">
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="./assets/images/services/service1.jpg" alt="service-image">
+                <img loading="lazy" class="w-100" src={ baseUrl + "assets/images/services/service1.jpg"} alt="service-image">
               </div>
               <div class="d-flex"> 
                 <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="./services_auto">Auto Electrician Services</a></h3>
+                    <h3 class="service-box-title"><a href={ baseUrl + "services_auto"}>Auto Electrician Services</a></h3>
                         <div class="d-flex justify-content-center align-items-center mb-2">
                     <i class="fa fa-solid fa-map-marker-alt text-danger fa-xs mr-1 "></i>  Mackay Region 
                     </div>
@@ -201,7 +201,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                         <li> <i class="fa fa-solid fa-check fa-xs"></i> Reliable workmanship you can trust</li> 
                       </ul>
                     </p>
-                    <a class="learn-more d-inline-block" href="./services_auto" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
+                    <a class="learn-more d-inline-block" href={ baseUrl + "services_auto"} aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
                 </div>
               </div>
           </div><!-- Service1 end -->
@@ -210,11 +210,11 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="col-lg-4 col-md-6 mb-5">
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="./assets/images/services/service2.jpg" alt="service-image">
+                <img loading="lazy" class="w-100" src={ baseUrl + "assets/images/services/service2.jpg"} alt="service-image">
               </div>
               <div class="d-flex"> 
                 <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="./services_air">Automotive Air Conditioning Regas & Maintenance</a></h3>
+                    <h3 class="service-box-title"><a href={ baseUrl + "services_air"}>Automotive Air Conditioning Regas & Maintenance</a></h3>
                      <div class="d-flex justify-content-center align-items-center mb-2">
                     <i class="fa fa-solid fa-map-marker-alt text-danger fa-xs mr-1 "></i>  Mackay Region 
                     </div>
@@ -234,7 +234,7 @@ import MainLayout from '../layouts/MainLayout.astro';
                         <li> <i class="fa fa-solid fa-check fa-xs"></i> Reliable cooling performance for your vehicle</li>
                     </ul>
                     </p>
-                    <a class="learn-more d-inline-block" href="./services_air" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
+                    <a class="learn-more d-inline-block" href={ baseUrl + "services_air"} aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
                 </div>
               </div>
           </div><!-- Service2 end -->

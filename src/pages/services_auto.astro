@@ -14,15 +14,15 @@ import Breadcrumb from '../components/Breadcrumb.astro';
               <h3 class="widget-title">Services</h3>
               <ul class="nav service-menu">
                 <li>
-                  <a href="./services_mobile"
+                  <a href={ baseUrl + "services_mobile"}
                     >Mobile Vehicle Service & Maintenance</a
                   >
                 </li>
                 <li class="active">
-                  <a href="./services_auto">Auto Electrician Services</a>
+                  <a href={ baseUrl + "services_auto"}>Auto Electrician Services</a>
                 </li>
                 <li>
-                  <a href="./services_air"
+                  <a href={ baseUrl + "services_air"}
                     >Automotive Air Conditioning Regas & Maintenance</a
                   >
                 </li>
@@ -75,7 +75,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
                 <img
                   loading="lazy"
                   class="img-fluid"
-                  src="./assets/images/projects/project3.jpg"
+                  src={ baseUrl + "assets/images/projects/project3.jpg"}
                   alt="project-slider-image"
                 />
               </div>
@@ -84,7 +84,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
                 <img
                   loading="lazy"
                   class="img-fluid"
-                  src="./assets/images/projects/project4.jpg"
+                  src={ baseUrl + "assets/images/projects/project4.jpg"}
                   alt="project-slider-image"
                 />
               </div>
