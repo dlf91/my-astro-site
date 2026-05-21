@@ -29,9 +29,9 @@ jobs:
     - name: 📂 Sync Compiled Dist to Hostinger Workspace
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ${{ secrets.FTP_SERVER }}
+        server: 88.223.84.30          # <-- Force your raw IP here directly
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/             # Uploads only the compiled files
-        server-dir: /public_html/      # Targets Hostinger's web root
-        dangerous-clean-slate: false   # Keeps existing files like custom PHP scripts safe
+        local-dir: ./dist/ 
+        server-dir: /public_html/
+        dangerous-clean-slate: false
