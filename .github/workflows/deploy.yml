@@ -1,29 +1,37 @@
-name: Deploy to GitHub Pages
+name: Compile and Deploy Astro to Hostinger
 
 on:
   push:
-    branches: [ main ]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - main  # Change this to 'master' if your default branch is master
 
 jobs:
-  build:
+  build-and-deploy:
+    name: 🚀 Compile & Deploy
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-      - name: Deploy
-        uses: actions/deploy-pages@v4
+    - name: 🚚 Fetch Repository Code
+      uses: actions/checkout@v4
+
+    - name: ⚙️ Setup Node.js Environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'  # Fits standard Astro development specs
+        cache: 'npm'
+
+    - name: 📦 Install Project Dependencies
+      run: npm ci
+
+    - name: 🏗️ Compile Production Build
+      run: npm run build
+
+    - name: 📂 Sync Compiled Dist to Hostinger Workspace
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/             # Uploads only the compiled files
+        server-dir: /public_html/      # Targets Hostinger's web root
+        dangerous-clean-slate: false   # Keeps existing files like custom PHP scripts safe
