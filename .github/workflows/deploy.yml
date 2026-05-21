@@ -32,10 +32,9 @@ jobs:
     - name: 📂 Sync Compiled Dist to Hostinger Workspace
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: 88.223.84.30          # <-- Force your raw IP here directly
+        server: 88.223.84.30
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
-        server-dir: /public_html/
-        log-level: verbose  # <-- ADD THIS LINE
+        server-dir: /                 # <─── Target the absolute login root
         dangerous-clean-slate: false
