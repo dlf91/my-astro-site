@@ -26,6 +26,9 @@ jobs:
     - name: 🏗️ Compile Production Build
       run: npm run build
 
+    - name: 🔍 Debug Directory Output (Check if dist exists)
+      run: ls -la
+
     - name: 📂 Sync Compiled Dist to Hostinger Workspace
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
