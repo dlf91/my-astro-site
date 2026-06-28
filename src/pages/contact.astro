@@ -151,16 +151,17 @@ const baseUrl = import.meta.env.BASE_URL;
 
   if (form) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      // 1. STOP the form immediately so we can inspect it
+      e.preventDefault(); 
 
-      // ─── NEW VALIDATION CHECK ───
-      // If any native constraint (required, pattern, minlength) fails, stop here.
+      // 2. CRITICAL: Ask the browser if the HTML5 constraints are satisfied
       if (!form.checkValidity()) {
-        form.reportValidity(); // Tells the browser to pop up its error alerts natively
-        return;
+        // If it's invalid, force the browser to display its built-in error bubbles
+        form.reportValidity(); 
+        return; // Halt execution here! Do not run the SweetAlert code below.
       }
 
-      // Show SweetAlert loading state only if data is valid
+      // 3. Only if valid, trigger the SweetAlert loading display
       Swal.fire({
         title: 'Sending Request...',
         text: 'Please wait while we transmit your details.',
@@ -195,7 +196,7 @@ const baseUrl = import.meta.env.BASE_URL;
         Swal.fire({
           icon: 'error',
           title: 'Submission Failed',
-          text: error.message || 'An error occurred. Please try again or call us directly.',
+          text: error.message || 'An error occurred. Please try again.',
           confirmButtonColor: '#dc3545'
         });
       }
