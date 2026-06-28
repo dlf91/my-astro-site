@@ -1,14 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
- 
 const baseUrl = import.meta.env.BASE_URL;
-
-import mobileServiceImage from '../assets/images/services/service3.jpg';
-import autoServiceImage from '../assets/images/services/service1.jpg';
-import airServiceImage from '../assets/images/services/service2.jpg';
-
-
-
 ---
 <MainLayout title="Home">
 <div class="banner-carousel banner-carousel-1 mb-0">
@@ -232,7 +224,120 @@ import airServiceImage from '../assets/images/services/service2.jpg';
  
 </section>
 
- 
+<section id="ts-features" class="ts-features pb-2">
+  <div class="container">
+    <div class="row text-center">
+        <div class="col-12">
+          <h2 class="section-title">We Are Specialists In</h2>
+          <h3 class="section-sub-title text-primary">What We Do</h3>
+        </div>
+    </div>
+    <div class="row">
+         <div class="col-lg-4 col-md-6 mb-5">
+          <div class="ts-service-box">
+              <div class="ts-service-image-wrapper">
+                <img width="360" height="250" loading="lazy" class="w-100" src={ baseUrl + "assets/images/services/service3.jpg"} alt="service-image">
+              </div>
+              <div class="d-flex"> 
+                <div class="ts-service-info">
+                    <h3 class="service-box-title"><a href={ baseUrl + "services_mobile"}>Mobile mechanic services</a></h3>
+                    <div class="d-flex justify-content-center align-items-center  mb-2">
+                    <i class="fa fa-solid fa-map-marker-alt text-danger fa-xs mr-1 "></i>  Mackay Region 
+                    </div>
+                    <p><b>Mobile services include:</b>
+                      <ul class="list-arrow">
+                        <li>Logbook servicing and routine maintenance</li>
+                        <li>Electrical diagnostics and fault finding</li>
+                        <li>Battery testing and replacement</li>
+                        <li>Alternator and starter motor repairs</li>
+                        <li>Wiring repairs and accessory installations</li>
+                        <li>General vehicle inspections and maintenance</li>
+                      </ul>
+                      <hr>
+                      <ul class="pl-0" style="list-style-type:none;"> 
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> We come to you anywhere in the Mackay region</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Convenient on-site servicing</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Professional diagnostics and repairs</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Reliable, high-quality workmanship</li>
+                    </ul>
+                    </p>
+                    <a class="learn-more d-inline-block" href={ baseUrl + "services_mobile"} aria-label="Learn more about our mobile mechanic services"><i class="fa fa-caret-right"></i> Learn more</a>
+                </div>
+              </div>
+          </div><!-- Service3 end -->
+        </div><!-- Col 3 end -->
+
+        <div class="col-lg-4 col-md-6 mb-5">
+          <div class="ts-service-box">
+              <div class="ts-service-image-wrapper">
+                <img width="360" height="250" loading="lazy" class="w-100" src={ baseUrl + "assets/images/services/service1.jpg"} alt="service-image">
+              </div>
+              <div class="d-flex"> 
+                <div class="ts-service-info">
+                    <h3 class="service-box-title"><a href={ baseUrl + "services_auto"}>Auto Electrician Services</a></h3>
+                        <div class="d-flex justify-content-center align-items-center mb-2">
+                    <i class="fa fa-solid fa-map-marker-alt text-danger fa-xs mr-1 "></i>  Mackay Region 
+                    </div>
+                    <p><b>Our Auto Electrical Services Include:</b>
+                      <ul class="list-arrow">
+                        <li>Electrical diagnostics and fault finding</li>
+                        <li>Battery testing and replacement</li>
+                        <li>Alternator and starter motor repairs</li>
+                        <li>Wiring repairs and electrical troubleshooting</li>
+                        <li>Vehicle accessory installations</li>                    
+                        <li><b>4×4 and off-road electrical upgrades</b></li>
+                      </ul>
+                      <hr>
+                      <ul class="pl-0" style="list-style-type:none;">
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Mobile service across the Mackay region</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Fast and accurate diagnostics</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Professional accessory installations</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Reliable workmanship you can trust</li> 
+                      </ul>
+                    </p>
+                    <a class="learn-more d-inline-block" href={ baseUrl + "services_auto"} aria-label="Learn more about our auto electrical repair services"><i class="fa fa-caret-right"></i> Learn more</a>
+                </div>
+              </div>
+          </div><!-- Service1 end -->
+        </div><!-- Col 1 end -->
+
+        <div class="col-lg-4 col-md-6 mb-5">
+          <div class="ts-service-box">
+              <div class="ts-service-image-wrapper">
+                <img width="360" height="250" loading="lazy" class="w-100" src={ baseUrl + "assets/images/services/service2.jpg"} alt="service-image">
+              </div>
+              <div class="d-flex"> 
+                <div class="ts-service-info">
+                    <h3 class="service-box-title"><a href={ baseUrl + "services_air"}>Car Air Conditioning</a></h3>
+                     <div class="d-flex justify-content-center align-items-center mb-2">
+                    <i class="fa fa-solid fa-map-marker-alt text-danger fa-xs mr-1 "></i>  Mackay Region 
+                    </div>
+                    <p><b>Our Air Conditioning Services Include:</b>
+                      <ul class="list-arrow">
+                        <li>Air conditioning system regas</li>
+                        <li>System performance testing and inspection</li>
+                        <li>Leak detection and system diagnostics</li>
+                        <li>Compressor and component checks</li>
+                        <li>Cabin air filter inspection and replacement</li>
+                        <li>General air conditioning maintenance</li>
+                      </ul>
+                      <hr>
+                      <ul class="pl-0" style="list-style-type:none;"> 
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Professional automotive air conditioning servicing</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Quality equipment and approved refrigerants</li>
+                        <li> <i class="fa fa-solid fa-check fa-xs"></i> Reliable cooling performance for your vehicle</li>
+                    </ul>
+                    </p>
+                    <a class="learn-more d-inline-block" href={ baseUrl + "services_air"} aria-label="Learn more about our car air conditioning services"><i class="fa fa-caret-right"></i> Learn more</a>
+                </div>
+              </div>
+          </div><!-- Service2 end -->
+        </div><!-- Col 2 end -->
+
+     
+    </div><!-- Content row end -->
+  </div><!-- Container end -->
+</section><!-- Feature are end -->
  
 
 
