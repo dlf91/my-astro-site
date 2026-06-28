@@ -121,6 +121,47 @@ const baseUrl = import.meta.env.BASE_URL;
 </section><!-- Main container end -->
 
 <script>
+  const form = document.getElementById('contact-form');
+  const alertBox = document.getElementById('form-alert');
+
+  if (form && alertBox) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Stop page reload/redirect
+
+      // Clear previous alert states
+      alertBox.style.display = 'none';
+      alertBox.className = 'alert-box'; 
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/send-email.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        alertBox.style.display = 'block';
+        if (response.ok && result.status === 'success') {
+          alertBox.textContent = 'Thank you! Your message has been sent successfully.';
+          alertBox.style.color = '#155724';
+          alertBox.style.backgroundColor = '#d4edda';
+          form.reset(); // Clear form fields on success
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        alertBox.style.display = 'block';
+        alertBox.textContent = 'An error occurred. Please try again or call directly.';
+        alertBox.style.color = '#721c24';
+        alertBox.style.backgroundColor = '#f8d7da';
+      }
+    });
+  }
+</script>
+
+<!-- <script>
   // Quick URL state banner script to show submission status notifications
   const urlParams = new URLSearchParams(window.location.search);
   const status = urlParams.get('status');
@@ -138,7 +179,7 @@ const baseUrl = import.meta.env.BASE_URL;
       alertBox.style.backgroundColor = '#f8d7da';
     }
   }
-</script>
+</script> -->
 
   <!-- Google Map API Key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3pS_KxDMA9ariSTAbqlxx7VtMaU3TIwU" defer></script>
