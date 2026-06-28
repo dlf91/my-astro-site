@@ -109,9 +109,19 @@ const baseUrl = import.meta.env.BASE_URL;
             <div class="col-md-4">
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input class="form-control form-control-subject" type="tel" name="phone" id="phone" pattern="^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$" 
-                    placeholder="0412 345 678"   />
-                    <small class="text-muted">Please enter a valid Australian phone number.</small>
+                <input 
+                  type="text" 
+                  name="phone" 
+                  id="phone" 
+                  required
+                  maxlength="10" 
+                  pattern="[0-9]*"
+                  inputmode="numeric"
+                  class="form-control" 
+                  placeholder="0412345678"
+                />
+                <small class="text-muted">Maximum 10 digits allowed (numbers only).</small>
+                 
                 <!-- <input class="form-control form-control-subject" name="subject" id="subject" placeholder="" required> -->
               </div>
             </div>
