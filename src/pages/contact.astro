@@ -120,16 +120,25 @@ const baseUrl = import.meta.env.BASE_URL;
   </div><!-- Conatiner end -->
 </section><!-- Main container end -->
 
+<script is:inline src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script is:inline>
-  // By using is:inline, we use standard vanilla JS (no 'as HTMLFormElement' casting required)
   const form = document.getElementById('contact-form');
-  const alertBox = document.getElementById('form-alert');
 
-  if (form && alertBox) {
+  if (form) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // This will work 100% now!
+      e.preventDefault(); // Stop page reload/redirect
 
-      alertBox.style.display = 'none';
+      // 1. Show a beautiful "Loading" popup while the server processes the email
+      Swal.fire({
+        title: 'Sending Request...',
+        text: 'Please wait while we transmit your details.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+
       const formData = new FormData(form);
 
       try {
@@ -140,20 +149,26 @@ const baseUrl = import.meta.env.BASE_URL;
 
         const result = await response.json();
 
-        alertBox.style.display = 'block';
         if (response.ok && result.status === 'success') {
-          alertBox.textContent = 'Thank you! Your message has been sent successfully.';
-          alertBox.style.color = '#155724';
-          alertBox.style.backgroundColor = '#d4edda';
-          form.reset(); 
+          // 2. Success Alert Box
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: 'Thank you! Your message has been sent successfully.',
+            confirmButtonColor: '#28a745'
+          });
+          form.reset(); // Clear form fields on success
         } else {
           throw new Error(result.message || 'Submission failed');
         }
       } catch (error) {
-        alertBox.style.display = 'block';
-        alertBox.textContent = 'An error occurred. Please try again or call directly.';
-        alertBox.style.color = '#721c24';
-        alertBox.style.backgroundColor = '#f8d7da';
+        // 3. Failure Alert Box
+        Swal.fire({
+          icon: 'error',
+          title: 'Submission Failed',
+          text: 'An error occurred. Please check your network connection or call us directly.',
+          confirmButtonColor: '#dc3545'
+        });
       }
     });
   }
