@@ -76,7 +76,7 @@ const baseUrl = import.meta.env.BASE_URL;
         <h3 class="column-title">We love to hear</h3>
         <!-- contact form works with formspree.io  -->
         <!-- contact form activation doc: https://docs.themefisher.com/constra/contact-form/ -->
-         <form action="/send-email.php" method="POST" id="contact-form" role="form">
+         <form action="/send-email.php" method="POST" id="contact-form"> 
           <div class="error-container"></div>
           <div class="honey-container" style="display: none !important;" aria-hidden="true">
             <label for="website_honey">Leave this field blank if you are human</label>
@@ -120,18 +120,16 @@ const baseUrl = import.meta.env.BASE_URL;
   </div><!-- Conatiner end -->
 </section><!-- Main container end -->
 
-<script>
+<script is:inline>
+  // By using is:inline, we use standard vanilla JS (no 'as HTMLFormElement' casting required)
   const form = document.getElementById('contact-form');
   const alertBox = document.getElementById('form-alert');
 
   if (form && alertBox) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Stop page reload/redirect
+      e.preventDefault(); // This will work 100% now!
 
-      // Clear previous alert states
       alertBox.style.display = 'none';
-      alertBox.className = 'alert-box'; 
-
       const formData = new FormData(form);
 
       try {
@@ -147,7 +145,7 @@ const baseUrl = import.meta.env.BASE_URL;
           alertBox.textContent = 'Thank you! Your message has been sent successfully.';
           alertBox.style.color = '#155724';
           alertBox.style.backgroundColor = '#d4edda';
-          form.reset(); // Clear form fields on success
+          form.reset(); 
         } else {
           throw new Error(result.message || 'Submission failed');
         }
