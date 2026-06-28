@@ -144,6 +144,7 @@ const baseUrl = import.meta.env.BASE_URL;
     </div><!-- Content row -->
   </div><!-- Conatiner end -->
 </section><!-- Main container end -->
+ 
 
 <script is:inline src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -152,55 +153,71 @@ const baseUrl = import.meta.env.BASE_URL;
 
   if (form) {
     form.addEventListener('submit', async (e) => {
-      // 1. STOP the form immediately so we can inspect it
-      e.preventDefault(); 
+      e.preventDefault(); // Stop standard submission
 
-      // 2. CRITICAL: Ask the browser if the HTML5 constraints are satisfied
+      // 1. First, check native HTML5 constraints (required, length, pattern)
       if (!form.checkValidity()) {
-        // If it's invalid, force the browser to display its built-in error bubbles
-        form.reportValidity(); 
-        return; // Halt execution here! Do not run the SweetAlert code below.
+        form.reportValidity(); // Show native browser validation bubbles
+        return; // Halt if something is missing or wrong
       }
 
-      // 3. Only if valid, trigger the SweetAlert loading display
+      // 2. Since inputs are valid, show a Confirmation Popup
       Swal.fire({
-        title: 'Sending Request...',
-        text: 'Please wait while we transmit your details.',
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
+        title: 'Confirm Your Details',
+        text: 'Are you sure you want to send this request?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#0d6efd', // Bootstrap primary blue
+        cancelButtonColor: '#6c757d',  // Bootstrap secondary gray
+        confirmButtonText: 'Yes, send it!',
+        cancelButtonText: 'Double check'
+      }).then(async (result) => {
+        // 3. If the user clicks "Yes, send it!", proceed to submit via fetch
+        if (result.isConfirmed) {
+          
+          // Switch immediately to the "Sending..." loading wheel
+          Swal.fire({
+            title: 'Sending Request...',
+            text: 'Please wait while we transmit your details.',
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading();
+            }
+          });
+
+          const formData = new FormData(form);
+
+          try {
+            const response = await fetch('/send-email.php', {
+              method: 'POST',
+              body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.status === 'success') {
+              // 4. Final Success Popup
+              Swal.fire({
+                icon: 'success',
+                title: 'Message Sent!',
+                text: 'Thank you! Your message has been sent successfully.',
+                confirmButtonColor: '#28a745'
+              });
+              form.reset(); // Wipe fields cleanly
+            } else {
+              throw new Error(result.message || 'Submission failed');
+            }
+          } catch (error) {
+            // 5. Error Popup if server slips up
+            Swal.fire({
+              icon: 'error',
+              title: 'Submission Failed',
+              text: error.message || 'An error occurred. Please try again or call directly.',
+              confirmButtonColor: '#dc3545'
+            });
+          }
         }
       });
-
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch('/send-email.php', {
-          method: 'POST',
-          body: formData
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.status === 'success') {
-          Swal.fire({
-            icon: 'success',
-            title: 'Message Sent!',
-            text: 'Thank you! Your message has been sent successfully.',
-            confirmButtonColor: '#28a745'
-          });
-          form.reset(); 
-        } else {
-          throw new Error(result.message || 'Submission failed');
-        }
-      } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Submission Failed',
-          text: error.message || 'An error occurred. Please try again.',
-          confirmButtonColor: '#dc3545'
-        });
-      }
     });
   }
 </script>
