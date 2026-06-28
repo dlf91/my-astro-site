@@ -1,11 +1,19 @@
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresDefault "access plus 1 month"
+  ExpiresDefault "access plus 1 year"
   
-  # Cache CSS, JS, and optimized Images for 1 year
+  # Explicitly target asset types
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|webp|js|css|woff2)$">
+    Header set Cache-Control "max-age=31536000, public, must-revalidate"
+  </FilesMatch>
 </IfModule>
